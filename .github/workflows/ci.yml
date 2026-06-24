@@ -19,4 +19,4 @@ jobs:
           skip-tests: 'false'
           skip-lint: 'false'
         env:
-          NODE_ENV: production
+          NODE_ENV: test
