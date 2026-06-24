@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Node.js CI/CD Wrapper
+        uses: savindaJ/Nodejs-cicd-wrapper@release
+        with:
+          node-version: '20'
+          skip-tests: 'false'
+          skip-lint: 'false'
+        env:
+          NODE_ENV: test
