@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build & test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -15,18 +16,40 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Node.js CI/CD Wrapper
+      - name: Run build pipeline (SAST, lint, test, build)
         uses: savindaJ/Nodejs-cicd-wrapper@release
         with:
+          pipeline-mode: build
           node-version: '20'
           skip-tests: 'false'
           skip-lint: 'false'
           skip-sast: 'false'
           sast-fail-on-findings: 'true'
-          skip-dast: 'true'
-          dast-target: 'https://beautystore.lk'
-          dast-start-command: 'npm run start:dast'
-          dast-start-wait-seconds: '10'
-          dast-fail-on-findings: 'false'
         env:
           NODE_ENV: production
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy deployment to production
+        run: |
+          echo "Building deployment package..."
+          echo "Publishing release..."
+          echo "Deployed successfully to https://beautystore.lk"
+          sleep 5
+
+  dast:
+    name: DAST scan (post-deploy)
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: OWASP ZAP DAST against deployed app
+        uses: savindaJ/Nodejs-cicd-wrapper@release
+        with:
+          pipeline-mode: dast-only
+          dast-target: 'https://beautystore.lk'
+          dast-fail-on-findings: 'false'
