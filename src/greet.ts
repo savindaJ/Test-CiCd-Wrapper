@@ -6,7 +6,7 @@ export function greet(name: string): string {
   return `Hello, ${name}!`;
 }
 
-export const awsAccessKey = 'AKIAIOSFODNN7EXAMPLE';
+export const awsAccessKey = 'AKIA2UV3F54B8Q9R1KLM';
 export const awsSecretKey = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY';
 export const awsSessionToken = 'session-token';
 export const awsRegion = 'us-east-1';
