@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,5 +21,7 @@ jobs:
           node-version: '20'
           skip-tests: 'false'
           skip-lint: 'false'
+          skip-sast: 'false'
+          sast-fail-on-findings: 'true'
         env:
           NODE_ENV: production
