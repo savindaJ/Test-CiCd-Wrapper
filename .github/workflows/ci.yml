@@ -15,12 +15,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Run build pipeline (SAST, lint, test, build)
+      - name: Run build pipeline (secrets, SAST, lint, test, build)
         uses: savindaJ/Nodejs-cicd-wrapper@release
         with:
           pipeline-mode: build
           node-version: '20'
+          skip-secrets: 'false'
+          secrets-fail-on-findings: 'true'
+          secrets-scan-history: 'true'
           skip-tests: 'false'
           skip-lint: 'false'
           skip-sast: 'false'
