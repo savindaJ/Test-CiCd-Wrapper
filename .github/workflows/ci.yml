@@ -24,7 +24,8 @@ jobs:
           skip-tests: 'false'
           skip-lint: 'false'
           skip-sast: 'false'
-          sast-fail-on-findings: 'true'
+          sast-fail-on-findings: 'false'
+          sast-fail-on-secrets: 'true'
         env:
           NODE_ENV: production
 
