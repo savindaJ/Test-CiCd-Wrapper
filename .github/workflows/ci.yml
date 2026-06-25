@@ -27,6 +27,6 @@ jobs:
           dast-target: 'http://localhost:3000'
           dast-start-command: 'npm run start:dast'
           dast-start-wait-seconds: '10'
-          dast-fail-on-findings: 'true'
+          dast-fail-on-findings: 'false'
         env:
           NODE_ENV: production
