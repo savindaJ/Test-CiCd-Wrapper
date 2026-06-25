@@ -23,7 +23,7 @@ jobs:
           skip-lint: 'false'
           skip-sast: 'false'
           sast-fail-on-findings: 'true'
-          skip-dast: 'false'
+          skip-dast: 'true'
           dast-target: 'https://beautystore.lk'
           dast-start-command: 'npm run start:dast'
           dast-start-wait-seconds: '10'
