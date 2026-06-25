@@ -23,5 +23,10 @@ jobs:
           skip-lint: 'false'
           skip-sast: 'false'
           sast-fail-on-findings: 'true'
+          skip-dast: 'false'
+          dast-target: 'http://localhost:3000'
+          dast-start-command: 'npm run start:dast'
+          dast-start-wait-seconds: '10'
+          dast-fail-on-findings: 'true'
         env:
           NODE_ENV: production
