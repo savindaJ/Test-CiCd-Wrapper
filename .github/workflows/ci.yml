@@ -52,9 +52,14 @@ jobs:
     permissions:
       contents: read
     steps:
+      # beautystore.lk must be reachable from GitHub Actions cloud runners.
+      # If connect times out, allow GitHub IP ranges in your firewall/WAF
+      # or run this job on a self-hosted runner inside your network.
       - name: OWASP ZAP DAST against deployed app
         uses: savindaJ/Nodejs-cicd-wrapper@release
         with:
           pipeline-mode: dast-only
           dast-target: 'https://beautystore.lk'
           dast-fail-on-findings: 'false'
+          dast-fail-on-unreachable: 'false'
+          dast-connect-timeout: '30'
