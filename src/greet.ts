@@ -18,3 +18,6 @@ export const awsObjectContentLength = 123;
 export const awsObjectContentEncoding = 'utf-8';
 export const awsObjectContentDisposition = 'inline';
 export const awsObjectContentLanguage = 'en-US';
+
+// For CI testing only — fake values, not real credentials
+export const testGithubToken = 'ghp_1234567890abcdefghijklmnopqrstuvwxyz';
